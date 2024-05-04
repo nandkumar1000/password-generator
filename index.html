@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="icon" href="https://www.sethserver.com/images/random-password-generator-og.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://th.bing.com/th/id/OIP.6VPASFM-nQY-BVsBzKpJUQHaEr?pid=ImgDet&w=176&h=111&c=7&dpr=1.5');
+            background-size:cover ;
+        }
+        header {
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            
+        }
+        nav {
+            height: 60px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: black;
+            
+        }
+        nav ul {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            font-size: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            font-size: 22px;
+            color: #ffcc00;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            height: 40px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        h1{
+            font: style 28px;;
+            color: red
+        }
+        #Passwordgenerator{
+            font-size: 22px;
+            border-radius: 9px;
+            color: black;
+            background-color: orange;
+           
+        }
+        #btnGenerate{
+            font-size: 22px;
+            border-radius: 9px;
+            background-color: orange;
+            color: black;
+        }
+        #btnShow{
+            font-size: 20px;
+            border-radius: 9px;
+            background-color: orange;
+            color: black;
+        }
+        #btnCopy{
+            font-size: 20px;
+            border-radius: 9px;
+            background-color: orange;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#login">Login</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Password Generator</h1>
+        <input id="Passwordgenerator" type="password" placeholder="Generated Password">
+        <button id="btnGenerate">Generate</button>
+        <button id="btnShow">Show</button>
+        <button id="btnCopy">Copy</button>
+    </header>
+
+    <footer>
+        <p>Disclaimer: This is a sample code for educational purposes.</p>
+        <p>&copy; 2024 - All rights reserved.</p>
+    </footer>
+
+    <script>
+        let passwordInput = document.getElementById("Passwordgenerator");
+        let btnGenerate = document.getElementById("btnGenerate");
+        let btnShow = document.getElementById("btnShow");
+        let btnCopy = document.getElementById("btnCopy");
+        
+        const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()+-_!?|ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const passwordLength = 15;
+
+        const generatePassword = () => {
+            let password = "";
+            for (let i = 0; i < passwordLength; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return password;
+        }
+
+        const showPassword = () => {
+            passwordInput.type = "text";
+        }
+
+        const hidePassword = () => {
+            passwordInput.type = "password";
+        }
+
+        const copyToClipboard = () => {
+            passwordInput.select();
+            document.execCommand("copy");
+        }
+
+        btnGenerate.addEventListener("click", () => {
+            let newPassword = generatePassword();
+            passwordInput.value = newPassword;
+            hidePassword();
+        });
+
+        btnShow.addEventListener("click", () => {
+            showPassword();
+        });
+
+        btnCopy.addEventListener("click", () => {
+            copyToClipboard();
+        });
+    </script>
+</body>
+</html>
